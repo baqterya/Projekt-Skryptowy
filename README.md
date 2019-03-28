@@ -1,4 +1,4 @@
-# Projekt-Skryptowy
+# Projekt-Skryptowy - Jakub Jędros
 Jakub Jędros 309677
 
 Uzywana biblioteka: Ren'Py https://www.renpy.org
