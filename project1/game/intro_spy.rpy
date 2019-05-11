@@ -138,7 +138,7 @@ label intro_spy:
             if t_background != "peasant":
                 g "W ciągu trasy będziesz prowadził dziennik.{p}Kilka razy w ciągu całej trasy spotka się z tobą ktoś z moich podwładnych."
             else:
-                g "Zapamiętuj dobrze wszysto co spotka cię na trasie.{p} ilka razy w ciągu całej trasy spotka się z tobą ktoś z moich podwładnych."
+                g "Zapamiętuj dobrze wszysto co spotka cię na trasie.{p}Kilka razy w ciągu całej trasy spotka się z tobą ktoś z moich podwładnych."
 
             g "I nie polecam próbować już więcej takich sztuczek."
 
