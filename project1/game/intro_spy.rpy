@@ -1,15 +1,17 @@
 label intro_spy:
     nvl clear
     stop music fadeout 3.0
-    show bg inn1
+    scene black
+    with Pause(3.5)
+    scene bg inn1
     with fade
 
-    play music "inn.mp3" fadein 1.5
+    play music "inn.mp3" fadein 3.0
 
 
-    n "W pierwszym dniu swojej podróży zatrzymałeś się w przydrożnej karczmie aby spędzić pierwszą noc poza rodzinną okolicą.
+    n "W pierwszym dniu swojej podróży zatrzymałeś się w przydrożnej karczmie aby spędzić pierwszą noc poza rodzinną okolicą.{p}
 
-     {p}Mimo tłoku udało Ci się znaleźć wolne miejsce, gdzie teraz w spokoju dopijasz kufel miejscowego piwa."
+     Mimo tłoku udało Ci się znaleźć wolne miejsce, gdzie teraz w spokoju dopijasz kufel miejscowego piwa."
 
     n "Nagle, jak z podziemii wyrasta przed tobą niewielka postać w płaszczu."
 
@@ -65,7 +67,7 @@ label intro_spy:
 
         g "To zaliczka."
 
-        if t_backround != "peasant":
+        if t_background != "peasant":
             g "W ciągu trasy będziesz prowadził dziennik.{p}Kilka razy w ciągu całej trasy spotka się z tobą ktoś z moich podwładnych."
         else:
             g "Zapamiętuj dobrze wszysto co spotka cię na trasie.{p}Kilka razy w ciągu całej trasy spotka się z tobą ktoś z moich podwładnych."
@@ -98,7 +100,7 @@ label intro_spy:
 
             g "Mam nadzieję, że się zrozumieliśmy."
 
-            if t_backround != "peasant":
+            if t_background != "peasant":
                 g "W ciągu trasy będziesz prowadził dziennik.{p}Kilka razy w ciągu całej trasy spotka się z tobą ktoś z moich podwładnych."
             else:
                 g "Zapamiętuj dobrze wszysto co spotka cię na trasie.{p}Kilka razy w ciągu całej trasy spotka się z tobą ktoś z moich podwładnych."
@@ -121,8 +123,23 @@ label intro_spy:
             n "Gnom zeskakuje z krzesła i przybliża się do twojej twarzy wbijając w ciebie swój prznikliwy wzrok."
 
             if t_background == "noble":
-                g ""
+                g "Gildii Handlowej nie brakuje inwestorów, więc nikt nie poczuje straty jednego z nich..."
+
+                g "Jeśli dobrze się rozumiemy, to zrobisz dokładnie to co ci powiem."
+
             elif t_background == "burgher":
-                g ""
+                g "Jeszcze jedna taka odzywka a zapewniam cię, że nie będziesz miał dokąd wracać w Lysvik."
+
+                g "A teraz lepiej słuchaj uważnie co musisz zrobić."
+
             elif t_background == "peasant":
-                g ""
+                g "Jeżeli nie chcesz aby jakiś przykry wypadek przydażył się w twojej rodzinnej mieścinie, to radzę słuchać uważnie."
+
+            if t_background != "peasant":
+                g "W ciągu trasy będziesz prowadził dziennik.{p}Kilka razy w ciągu całej trasy spotka się z tobą ktoś z moich podwładnych."
+            else:
+                g "Zapamiętuj dobrze wszysto co spotka cię na trasie.{p} ilka razy w ciągu całej trasy spotka się z tobą ktoś z moich podwładnych."
+
+            g "I nie polecam próbować już więcej takich sztuczek."
+
+            jump intro_done
