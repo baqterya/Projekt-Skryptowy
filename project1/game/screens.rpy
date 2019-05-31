@@ -253,14 +253,14 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("Cofnij") action Rollback()
+            textbutton _("Historia") action ShowMenu('history')
+            textbutton _("Pomiń") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            textbutton _("Zapisz") action ShowMenu('save')
+            textbutton _("Sz. Zapis") action QuickSave()
+            textbutton _("Sz. Wczytanie") action QuickLoad()
+            textbutton _("Ustawienia") action ShowMenu('preferences')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -301,35 +301,35 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            textbutton _("Rozpocznij Grę") action Start()
 
         else:
 
-            textbutton _("History") action ShowMenu("history")
+            textbutton _("Historia") action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
+            textbutton _("Zapisz") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        textbutton _("Wczytaj") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("Ustawienia") action ShowMenu("preferences")
 
         if _in_replay:
 
-            textbutton _("End Replay") action EndReplay(confirm=True)
+            textbutton _("Zakończ Powtórkę") action EndReplay(confirm=True)
 
         elif not main_menu:
 
-            textbutton _("Main Menu") action MainMenu()
+            textbutton _("Menu Główne") action MainMenu()
 
         textbutton _("About") action ShowMenu("about")
 
         if renpy.variant("pc"):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+            textbutton _("Pomoc") action ShowMenu("help")
 
             ## The quit button is banned on iOS and unnecessary on Android.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            textbutton _("Wyjdź") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -588,19 +588,19 @@ screen save():
 
     tag menu
 
-    use file_slots(_("Save"))
+    use file_slots(_("Zapisz"))
 
 
 screen load():
 
     tag menu
 
-    use file_slots(_("Load"))
+    use file_slots(_("Wczytaj"))
 
 
 screen file_slots(title):
 
-    default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Automatic saves"), quick=_("Quick saves"))
+    default page_name_value = FilePageNameInputValue(pattern=_("Strona {}"), auto=_("Zapisy automatyczne"), quick=_("Szybkie zapisy"))
 
     use game_menu(title):
 
@@ -642,7 +642,7 @@ screen file_slots(title):
 
                         add FileScreenshot(slot) xalign 0.5
 
-                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
+                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("Wolne miejsce")):
                             style "slot_time_text"
 
                         text FileSaveName(slot):
@@ -717,7 +717,7 @@ screen preferences():
 
     tag menu
 
-    use game_menu(_("Preferences"), scroll="viewport"):
+    use game_menu(_("Ustawienia"), scroll="viewport"):
 
         vbox:
 
@@ -728,9 +728,9 @@ screen preferences():
 
                     vbox:
                         style_prefix "radio"
-                        label _("Display")
-                        textbutton _("Window") action Preference("display", "window")
-                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
+                        label _("Sposób wyświetlania")
+                        textbutton _("Okno") action Preference("display", "window")
+                        textbutton _("Pełnoekranowy") action Preference("display", "fullscreen")
 
                 vbox:
                     style_prefix "radio"
@@ -741,10 +741,10 @@ screen preferences():
 
                 vbox:
                     style_prefix "check"
-                    label _("Skip")
-                    textbutton _("Unseen Text") action Preference("skip", "toggle")
-                    textbutton _("After Choices") action Preference("after choices", "toggle")
-                    textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
+                    label _("Pomiń")
+                    textbutton _("Niewidziany tekst") action Preference("skip", "toggle")
+                    textbutton _("Po wyborach") action Preference("after choices", "toggle")
+                    textbutton _("Przejścia") action InvertSelected(Preference("transitions", "toggle"))
 
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
@@ -757,7 +757,7 @@ screen preferences():
 
                 vbox:
 
-                    label _("Text Speed")
+                    label _("Prędkość Tekstu")
 
                     bar value Preference("text speed")
 
@@ -768,14 +768,14 @@ screen preferences():
                 vbox:
 
                     if config.has_music:
-                        label _("Music Volume")
+                        label _("Głośność Muzyki")
 
                         hbox:
                             bar value Preference("music volume")
 
                     if config.has_sound:
 
-                        label _("Sound Volume")
+                        label _("Głośność Dźwięków")
 
                         hbox:
                             bar value Preference("sound volume")
@@ -784,19 +784,19 @@ screen preferences():
                                 textbutton _("Test") action Play("sound", config.sample_sound)
 
 
-                    if config.has_voice:
-                        label _("Voice Volume")
+                    #if config.has_voice:
+                    #   label _("Voice Volume")
 
-                        hbox:
-                            bar value Preference("voice volume")
+                    #    hbox:
+                    #        bar value Preference("voice volume")
 
-                            if config.sample_voice:
-                                textbutton _("Test") action Play("voice", config.sample_voice)
+                    #        if config.sample_voice:
+                    #            textbutton _("Test") action Play("voice", config.sample_voice)
 
                     if config.has_music or config.has_sound or config.has_voice:
                         null height gui.pref_spacing
 
-                        textbutton _("Mute All"):
+                        textbutton _("Wycisz wszystko"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
 
