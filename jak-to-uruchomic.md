@@ -2,9 +2,9 @@
 Ren'py umożliwia stworzenie build'u gry.
 Linki do pobrania wersji:
   Na windowsa:
-    
+    https://uniwroc-my.sharepoint.com/:u:/g/personal/309677_uwr_edu_pl/ET4wULMxeZ9OpXuCvzkr3MMBJPNhmd_wJbYrXa82_goBmQ?e=hwOw1d
   Na linuxa:
-    
+    https://uniwroc-my.sharepoint.com/:u:/g/personal/309677_uwr_edu_pl/EfkmpoxiUXJBihcgVAPKG58BC7jhSnmxCuK-PweEcNWarw?e=1xi3cE
 
 Jak otworzyć projekt:
   1. Pobrać najnowszą wersję Ren'py z następującej strony:
